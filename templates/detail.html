@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block files %}
+
+  {% if document.thumbnail %}
+  <img src="{{ document.thumbnail.url}}">
+  {% else %}
+  <img src="{{ document.document.url }}">
+  {% endif %}
+  <h1>{{ document }}</h1>
+  <h2>{{ document.uploaded_at }}</h2>
+  <h4>Owner: {{ document.uploaded_by }}</h4>
+  <h3>Permission granted to:</h3>
+  {% for u in document.allowed_users.all  %}
+  <h4>{{ u }}</h4>
+  {% endfor %}
+{% endblock %}

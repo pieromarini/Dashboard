@@ -1,0 +1,131 @@
+/*==============================================================================
+*                           DASHBY CUSTOM STYLINGS
+*                              USING BOOTSTRAP
+ * ============================================================================*/
+/* NAVBAR BRAND CENTERING AND Z-INDEX FIX  */
+.navbar-brand{
+  font-size: 45px;
+  float: none;
+}
+.navbar-center{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  margin: auto;
+}
+.navbar-center a{
+  position: relative;
+  color: #FFF;
+  z-index: 21;
+}
+.navbar-center a:hover{
+  color: #A9A9A9;
+  text-decoration: none;
+}
+.navbar-inverse .navbar-collapse{
+  position: relative;
+  z-index: 20;
+}
+.navbar-inverse .navbar-brand{
+  color: #FFF;
+}
+.navbar-inverse .navbar-brand:hover{
+  color: #A9A9A9;
+}
+
+/* CUSTOM DROPDOWN STYLES  */
+.navbar-inverse .navbar-nav .dropdown a{
+  /* Dropdown font color Outer, bg-color same as inverse navbar, no border.  */
+  color: #FFF;
+  font-size 18px;
+  background-color: #222;
+  border: none;
+}
+/* Override default btn size  */
+.btn{
+  font-size: 18px;
+}
+/* Navbar links custom styles  */
+.dropdown-menu{
+  background-color: #222;
+}
+.navbar-left{
+  margin-left: 80px;
+}
+.navbar-right{
+  margin-right: 120px;
+}
+.navbar-right li,
+.navbar-left li{
+  font-size: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.navbar-inverse .navbar-nav li a{
+  color: #FFF;
+}
+.navbar-inverse .navbar-nav li a:hover{
+  color: #A9A9A9;
+  background-color: #000;
+}
+/* Style for Bootstrap Modal  */
+form{
+  display: block;
+}
+
+/* Styles for dropzone  */
+.table{
+  min-height: 200px;
+  border-style: dashed;
+  border-width: 2px;
+}
+
+.col-md-2{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* Custom PopOvers  */
+.popover-title{
+  font-size: 20px;
+  text-align: center;
+  background-color: #4d4d4d;
+  color: #FFF;
+}
+.popover-content{
+  height: 90px;
+  width: 200px;
+}
+
+/* Hide overflowing text in thumbnails */
+.col-md-12{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-top: 8px;
+  text-align: center;
+} 
+.col-md-4{
+  padding-left: 15px;
+  padding-right: 0;
+}
+.col-md-4 button{
+  margin-top: 12px;
+} 
+
+.thumbnail{
+  margin-bottom: 0;
+}
+/* Center image on his column  */
+.thumbnail a img{
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+
+
+

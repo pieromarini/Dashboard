@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equi="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+  <meta name="description" content="">
+  <title>{% block title %} {% endblock %}</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/dropzone.css' %}" type="text/css" />
+  <link rel="stylesheet" href="{% static '/css/jquery-ui.css'  %}" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/dashby.css' %}" type="text/css" />     
+</head>
+<body>
+  <!-- Navigation Bar  -->
+  <div class="navbar-wrapper">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+            <span class="sr-only"> Toggle Navigation </span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-center navbar-brand">
+            <a href="/">Dashby</a>
+          </div>
+        </div> <!-- /navbar-header  -->
+        
+        <div id ="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'dashby-files:dashby' %}">Home</a></li>
+            <li><a href="#">Profile</a></li> <!-- TODO: Add profile page.  -->
+            <li id="users_page">
+            {% if messages %}
+              {% for message in messages %}
+                {% if "warning" in message.tags %}
+                  <a tabindex="0" id="popup-users" href="{% url 'dashby-files:users' %}" 
+                     role="button" data-toggle="popover" data-trigger="focus" 
+                     title="Forbidden Access" data-content="{{ message }}" 
+                     data-placement="bottom">
+                    Users
+                  </a>
+                {% else %}
+                  <a href="{% url 'dashby-files:users' %}">Users</a>
+                {% endif %}
+              {% endfor %}
+            {% else %}<!-- No Popover -->
+              <a href="{% url 'dashby-files:users' %}">Users</a>
+            {% endif %}
+            </li> 
+          </ul>
+          <ul class="nav navbar-nav navbar-left">
+            {% block navbar %}
+              {% if user.is_authenticated %}
+                <li class="dropdown">
+                  <a href="#" class="btn btn-default dropdown-toggle" type="button"
+                  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" 
+                  aria-expanded="true">
+                    Files
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="{% url 'dashby-files:files' %}">Public</a></li>
+                    <li><a href="{% url 'dashby-files:private' %}">Private</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'dashby-files:document-add' %}">Add Files</a></li>
+                  </ul>
+                </li> <!-- /dropdown  -->
+                <li><a href="{% url 'dashby-files:logout' %}">Logout</a></li>
+              {% else %}
+                <li><a href="{% url 'dashby-files:login' %}">Login</a></li>
+                <li><a href="{% url 'dashby-files:register' %}">Register</a></li>
+              {% endif %}
+            {% endblock %}
+          </ul>
+        </div> <!-- /navbar  --> 
+
+      </div> <!-- /container-fluid  -->
+    </nav>
+  </div> <!-- /navbar-wrapper  -->
+    {% block files %}
+    {% endblock  %}
+  <script src="{% static 'js/vendor/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'js/jquery-ui.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/dropzone.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block dz-add %}
+  {% endblock %}
+</body>
+</html>
